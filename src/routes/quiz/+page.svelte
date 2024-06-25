@@ -1,15 +1,13 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
-	import { quizStore, addUserAnswer, setupTempData } from '$lib/stores/quizStore';
+	import { quizStore, addUserAnswer } from '$lib/stores/quizStore';
 	import { fade } from 'svelte/transition';
 
-  console.log('quizStore', $quizStore);
   onMount(() => {
     if ($quizStore.quizSubject === '') {
       goto('/');
     }
-    setupTempData();
   });
 
 	const handleAnswer = (index: number) => {

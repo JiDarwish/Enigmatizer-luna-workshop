@@ -1,20 +1,38 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { setQuizSubject, quizStore } from '$lib/stores/quizStore';
+	import { setQuizSubject, setQuestions } from '$lib/stores/quizStore';
 
 	let quizSubject = '';
 	let loading = false;
 	let errorMessage = '';
 
-	const formSubmitted = () => {
+	const formSubmitted = async () => {
 		if (quizSubject.trim() === '') {
 			errorMessage = 'Please enter a quiz subject';
 			return;
 		}
-    setQuizSubject(quizSubject);
+		setQuizSubject(quizSubject);
 		errorMessage = '';
 		loading = true;
-		goto('/quiz');
+
+		// Send a request to generate the questions on the server
+		const questionsResponse = await fetch('/generate-questions', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ topic: quizSubject })
+		});
+
+		if (questionsResponse.ok) {
+			const data = await questionsResponse.json();
+      console.log('Is all good');
+			setQuestions(data.questions);
+			goto('/quiz');
+		} else {
+			errorMessage = 'Something went wrong, for once it is not your fault.';
+			loading = false;
+		}
 	};
 </script>
 
@@ -56,6 +74,5 @@
 				<p class="text-red-500 text-sm">{errorMessage}</p>
 			</form>
 		{/if}
-
 	</div>
 </body>
