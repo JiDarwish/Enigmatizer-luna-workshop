@@ -1,6 +1,8 @@
 import type { RequestHandler } from "@sveltejs/kit";
 import { json } from '@sveltejs/kit';
 
+import { generateQuestions } from '$lib/utils/questionGenerator';
+ 
 // TEMPORARY DATA 
 const astrophysicsQuestions = [
   {
@@ -57,8 +59,9 @@ const astrophysicsQuestions = [
 
 export const POST: RequestHandler = async ({ request }) => {
   const { topic } = await request.json();
-  console.log(topic);
-  const questions = astrophysicsQuestions;
+  const realQuestions = await generateQuestions(topic);
+  // Use realQuestions if there are any, otherwise use the temporary data 
+  const questions = realQuestions.length > 0 ? realQuestions : astrophysicsQuestions;
 
   return json({ questions });
 }

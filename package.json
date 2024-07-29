@@ -34,7 +34,10 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@langchain/community": "^0.2.14",
+		"@langchain/core": "^0.2.9",
 		"langchain": "^0.2.6",
-		"openai": "^4.52.0"
+		"openai": "^4.52.0",
+		"prompts": "link:@langchain/core/prompts"
 	}
 }
