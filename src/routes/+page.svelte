@@ -28,7 +28,7 @@
 			const data = await questionsResponse.json();
       console.log('Is all good');
 			setQuestions(data.questions);
-			goto('/quiz');
+			goto(`/quiz/${data.quizId}`);
 		} else {
 			errorMessage = 'Something went wrong, for once it is not your fault.';
 			loading = false;

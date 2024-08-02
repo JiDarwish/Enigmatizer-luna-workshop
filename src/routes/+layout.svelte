@@ -1,8 +1,8 @@
 <script>
 	import '../app.css';
-	import { page } from '$app/stores'; // Import the $page store
+	import { page } from '$app/stores';
 
-	$: currentPath = $page.url.pathname; // Reactive assignment to get the current path
+	$: currentPath = $page.url.pathname;
 </script>
 
 <svelte:head>
@@ -24,6 +24,7 @@
 
 			<nav>
 				<ul class="flex space-x-4">
+					<li><a href="/leaderboard">Leaderboard</a></li>
 					<li><a href="/pricing">Pricing</a></li>
 					<li><a href="/about">About</a></li>
 				</ul>
@@ -35,7 +36,7 @@
 
 	{#if currentPath !== '/quiz'}
 		<footer class="flex justify-center p-8">
-			<p>&copy; 2024 Ji's Enigmatizer LLC<sup>TM</sup></p>
+			<p>&copy; 2024 Enigmatizer LLC<sup>TM</sup></p>
 		</footer>
 	{/if}
 </div>

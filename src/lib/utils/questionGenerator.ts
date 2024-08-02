@@ -7,7 +7,7 @@ const ollama = new Ollama({
 })
 
 const promptTemplateString = `
-You are a quiz-making AI. You are given a topic and need to generate 10 questions about that topic, along with 4 multiple choice answers for each question. You also need to provide the index of the correct answer. This is meant to be a ridiculous and funny quiz, so feel free to make up questions and answers that will ridicule the topic.
+You are a quiz-making AI. You are given a topic and need to generate 10 questions about that topic, along with 4 multiple choice answers for each question. You also need to provide the index of the correct answer. This is meant to be a ridiculous and funny quiz, but still turthful answers. So make up questions and answers with that in mind.
 Here is an example, and stick to the format of the example of a JSON parsable string. 
 This is how your answer should look like:
 

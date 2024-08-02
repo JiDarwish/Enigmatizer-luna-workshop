@@ -8,6 +8,8 @@
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"db:push": "drizzle-kit push",
+
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write ."
 	},
@@ -17,6 +19,8 @@
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"@types/eslint": "^8.56.7",
 		"autoprefixer": "^10.4.19",
+		"dotenv": "^16.4.5",
+		"drizzle-kit": "^0.23.0",
 		"eslint": "^9.0.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.36.0",
@@ -36,6 +40,8 @@
 	"dependencies": {
 		"@langchain/community": "^0.2.14",
 		"@langchain/core": "^0.2.9",
+		"@vercel/postgres": "^0.9.0",
+		"drizzle-orm": "^0.32.1",
 		"langchain": "^0.2.6",
 		"openai": "^4.52.0",
 		"prompts": "link:@langchain/core/prompts"
